@@ -23,8 +23,24 @@ La aplicación está dockerizada y cuenta con **tests automáticos usando Pytest
 - Pytest
 - Flake8 + Black
 - Make (para automatización de comandos)
-
+- Neon como base de datos PostgreSQL
 ---
+
+Base de datos
+Este proyecto utiliza Neon como base de datos PostgreSQL. Para configurar la conexión de base de datos, la clave está actualmente hardcodeada en el archivo settings.py para facilitar la inicialización del proyecto, pero deberia encontrarse en .ENV
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'neondb',  # Nombre de la base de datos
+        'USER': 'neondb_owner',  # Usuario de la base de datos
+        'PASSWORD': 'npg_YjzkL5WR3AQT',  # Contraseña
+        'HOST': 'ep-red-poetry-a59rmz46-pooler.us-east-2.aws.neon.tech',  # Dirección del host
+        'PORT': '5432',  # Puerto estándar de PostgreSQL
+        'OPTIONS': {
+            'sslmode': 'require',  # Para habilitar SSL
+        },
+    }
+}
 
 ## 📦 Instalación
 
@@ -40,6 +56,11 @@ cd prueba-backend
 ```bash
 make build   # Construye la imagen
 make up      # Inicia los contenedores
+
+# SIN MAKE:
+docker-compose build
+docker-compose up
+
 ```
 
 La API estará disponible en:  
@@ -53,6 +74,9 @@ Para ejecutar los tests automáticos con **Pytest**:
 
 ```bash
 make test
+
+#Sin Make
+docker-compose run --rm web pytest
 ```
 
 Si todo funciona correctamente, verás algo como:
@@ -88,7 +112,7 @@ make format
 | `make build`         | Reconstruye la imagen Docker                 |
 | `make migrate`       | Aplica migraciones                           |
 | `make makemigrations`| Crea nuevas migraciones                      |
-| `make test`          | Ejecuta los tests con Pytest                 |
+| `make test -v`       | Ejecuta los tests con Pytest                 |
 | `make lint`          | Verifica el estilo de código (Flake8)        |
 | `make format`        | Formatea el código con Black                 |
 | `make createsuperuser` | Crea un superusuario de Django             |

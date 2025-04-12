@@ -72,14 +72,28 @@ WSGI_APPLICATION = "todolist_project.wsgi.application"
 
 
 # Database
-# https://docs.djangoproject.com/en/5.2/ref/settings/#databases
+# DATABASE USED FOR TESTING IN NEON 
+# THE URL SHOULDNT BE IN THE SETTINGS FILE, BUT IN ORDER TO SEE THE TESTS WORKING I HAD TO PUT IT HERE
+# IT SHOULD BE IN THE ENVIRONMENT VARIABLES .ENV
+import os
+import dj_database_url
 
-DATABASES = {
+if os.getenv("USE_SQLITE_FOR_TESTS") == "1":
+    DATABASES = {
+        "default": {
+            "ENGINE": "django.db.backends.sqlite3",
+            "NAME": ":memory:",
+        }
+    }
+else:
+    DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.sqlite3",
         "NAME": BASE_DIR / "db.sqlite3",
+        }
     }
-}
+
+
 
 
 # Password validation
