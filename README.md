@@ -31,7 +31,7 @@ La aplicación está dockerizada y cuenta con **tests automáticos usando Pytest
 ### 1. Clonar el repositorio
 
 ```bash
-git 
+git clone https://github.com/Felipe7575/todolist.git
 cd prueba-backend
 ```
 
