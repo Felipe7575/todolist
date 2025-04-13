@@ -32,13 +32,13 @@ Este proyecto utiliza Neon como base de datos PostgreSQL. Para configurar la con
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'neondb',  # Nombre de la base de datos
-        'USER': 'neondb_owner',  # Usuario de la base de datos
-        'PASSWORD': 'npg_YjzkL5WR3AQT',  # Contraseña
-        'HOST': 'ep-red-poetry-a59rmz46-pooler.us-east-2.aws.neon.tech',  # Dirección del host
-        'PORT': '5432',  # Puerto estándar de PostgreSQL
+        'NAME': 'neondb', 
+        'USER': 'neondb_owner', 
+        'PASSWORD': 'npg_YjzkL5WR3AQT',  
+        'HOST': 'ep-red-poetry-a59rmz46-pooler.us-east-2.aws.neon.tech', 
+        'PORT': '5432',  
         'OPTIONS': {
-            'sslmode': 'require',  # Para habilitar SSL
+            'sslmode': 'require',  
         },
     }
 }
