@@ -28,6 +28,7 @@ La aplicación está dockerizada y cuenta con **tests automáticos usando Pytest
 
 Base de datos
 Este proyecto utiliza Neon como base de datos PostgreSQL. Para configurar la conexión de base de datos, la clave está actualmente hardcodeada en el archivo settings.py para facilitar la inicialización del proyecto, pero deberia encontrarse en .ENV
+```bash
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
@@ -41,6 +42,7 @@ DATABASES = {
         },
     }
 }
+```
 
 ## 📦 Instalación
 
